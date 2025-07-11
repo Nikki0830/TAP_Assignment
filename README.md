@@ -62,6 +62,12 @@ Edit
 Install dependencies
 
 
-npm install
-Start the server
+npm install-
+Start the server-
 npm start
+
+<img width="944" height="554" alt="Image" src="https://github.com/user-attachments/assets/2585bd68-46c4-4a12-a951-2e89d99616e7" />
+<br/>
+
+<img width="1021" height="873" alt="Image" src="https://github.com/user-attachments/assets/a07aff61-2bd5-4ece-87b6-6535242f6479" />
+
