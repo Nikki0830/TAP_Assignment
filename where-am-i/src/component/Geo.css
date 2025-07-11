@@ -1,12 +1,21 @@
+body {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
 .container {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   padding: 2rem;
   background-color: cyan;
   border-radius: 12px;
-  width: 90%;
-  max-width: 600px;
+  width: 95vw; /* Take 95% of the full screen width */
+  max-width: 1200px; /* Increase this from 600px to 1200px or more */
+  margin: 0 auto; /* Center the box */
   color: black;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .title {
@@ -25,6 +34,7 @@
 }
 
 .card h3 {
+  font-size: larger;
   margin-top: 0;
   margin-bottom: 0.5rem;
   color: #333;
@@ -33,7 +43,6 @@
 .card p,
 .card li {
   font-size: 1rem;
- 
 }
 
 .card ul {

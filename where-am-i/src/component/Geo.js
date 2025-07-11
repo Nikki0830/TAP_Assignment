@@ -29,15 +29,19 @@ function Geo() {
   //  2. Get network connection
   useEffect(() => {
     const connection =
-      navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      navigator.connection ||
+      navigator.mozConnection ||
+      navigator.webkitConnection;
 
     if (connection) {
       setConnectionType(connection.effectiveType);
 
-      const updateConnectionStatus = () => setConnectionType(connection.effectiveType);
+      const updateConnectionStatus = () =>
+        setConnectionType(connection.effectiveType);
       connection.addEventListener("change", updateConnectionStatus);
 
-      return () => connection.removeEventListener("change", updateConnectionStatus);
+      return () =>
+        connection.removeEventListener("change", updateConnectionStatus);
     }
   }, []);
 
@@ -72,7 +76,6 @@ function Geo() {
     return () => clearInterval(interval);
   }, [location]); // only runs when location updates
 
-
   return (
     <div className="container">
       <h1 className="title">🌍 Where Am I?</h1>
@@ -102,11 +105,42 @@ function Geo() {
         {locationHistory.length === 0 ? (
           <p>Location history cleared or no entries yet.</p>
         ) : (
+          //   <ul>
+          //     {locationHistory.map((entry, index) => (
+          //       <li key={index}>
+          //         📍 {entry.latitude}, {entry.longitude} –{" "}
+          //         <em>{entry.timestamp}</em>
+          //       </li>
+          //     ))}
+          //   </ul>
           <ul>
             {locationHistory.map((entry, index) => (
-              <li key={index}>
-                📍 {entry.latitude}, {entry.longitude} –{" "}
-                <em>{entry.timestamp}</em>
+              <li key={index} style={{ marginBottom: "1rem" }}>
+                <p>
+                  📍{" "}
+                  <strong>
+                    {entry.latitude}, {entry.longitude}
+                  </strong>{" "}
+                  – <em>{entry.timestamp}</em>
+                </p>
+                <iframe
+                  title={`map-${index}`}
+                  width="100%"
+                  height="500"
+                  frameBorder="0"
+                  style={{ border: 0, borderRadius: "8px" }}
+                  src={`https://www.google.com/maps?q=${entry.latitude},${entry.longitude}&z=15&output=embed`}
+                  allowFullScreen
+                ></iframe>
+
+                {/*  View on Google Maps link */}
+                <a
+                  href={`https://www.google.com/maps?q=${entry.latitude},${entry.longitude}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  🔎 View on Google Maps
+                </a>
               </li>
             ))}
           </ul>
@@ -114,8 +148,7 @@ function Geo() {
       </div>
 
       <p className="note">
-        ⏳ Location auto-saves every 10 seconds and clears after 5
-        entries.
+        ⏳ Location auto-saves every 10 seconds and clears after 5 entries.
       </p>
     </div>
   );
